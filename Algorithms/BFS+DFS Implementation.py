@@ -92,6 +92,37 @@ class BinarySearchTree:
 
         return self.breadth_first_search_recur(q,l)
 
+    def DFSInOrder(self, node, con):
+        if node.left:
+            self.DFSInOrder(node.left, con)
+        con.append(node.val)
+        if node.right:
+            self.DFSInOrder(node.right, con)
+
+
+        return con
+
+
+    def DFSPreOrder(self, node, con):
+        con.append(node.val)
+        if(node.left):
+            self.DFSPreOrder(node.left,con)
+
+        if(node.right):
+            self.DFSPreOrder(node.right,con)
+
+        return con
+
+    def DFSPostOrder(self, node, con):
+        if (node.left):
+            self.DFSPostOrder(node.left, con)
+
+        if (node.right):
+            self.DFSPostOrder(node.right, con)
+
+        con.append(node.val)
+        return con
+
 
 
 
@@ -112,4 +143,10 @@ print(node)
 ans = tree.breadth_first_search()
 print(ans)
 ans = tree.breadth_first_search_recur([tree.root],[])
+print(ans)
+ans = tree.DFSInOrder(tree.root,[])
+print(ans)
+ans = tree.DFSPreOrder(tree.root,[])
+print(ans)
+ans = tree.DFSPostOrder(tree.root,[])
 print(ans)
